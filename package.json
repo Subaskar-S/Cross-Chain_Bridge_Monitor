@@ -1,0 +1,36 @@
+{
+  "name": "cross-chain-bridge-monitoring-system",
+  "version": "1.0.0",
+  "description": "Cross-chain bridge monitoring system for tracking and analyzing bridge activity in real time",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "hardhat": "hardhat node",
+    "sync": "node scripts/sync-historical.js",
+    "health": "node scripts/health-check.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.10.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.16.3",
+    "nodemailer": "^7.0.5",
+    "socket.io": "^4.8.1",
+    "web3": "^4.16.0",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "ethers": "^5.8.0",
+    "hardhat": "^2.25.0",
+    "jest": "^30.0.4",
+    "nodemon": "^3.1.10"
+  }
+}
