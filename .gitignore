@@ -10,6 +10,7 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+.env.test
 
 # Logs
 logs/
@@ -103,3 +104,14 @@ Thumbs.db
 # Temporary files
 tmp/
 temp/
+
+# Demo and test files (exclude from production)
+*test-server*
+*minimal-server*
+*demo*
+*mock*
+SUMMARY.md
+
+# Development logs
+logs/
+*.log

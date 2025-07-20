@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:6.0
+    container_name: bridge-monitor-db
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: bridge-monitor
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./scripts/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      - bridge-network
+
+  # Bridge Monitor Application
+  bridge-monitor:
+    build: .
+    container_name: bridge-monitor-app
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+    environment:
+      NODE_ENV: production
+      MONGODB_URI: mongodb://admin:password123@mongodb:27017/bridge-monitor?authSource=admin
+      PORT: 3000
+      DEMO_MODE: "true"
+      ENABLE_LISTENERS: "false"
+      ENABLE_ALERTS: "false"
+      LOG_LEVEL: info
+      # Add your RPC URLs here
+      ETHEREUM_RPC_URL: https://eth.llamarpc.com
+      POLYGON_RPC_URL: https://polygon.llamarpc.com
+      BSC_RPC_URL: https://bsc-dataseed.binance.org/
+      # Demo contract addresses
+      ETHEREUM_BRIDGE_CONTRACT: "0x1234567890123456789012345678901234567890"
+      POLYGON_BRIDGE_CONTRACT: "0x1234567890123456789012345678901234567890"
+      BSC_BRIDGE_CONTRACT: "0x1234567890123456789012345678901234567890"
+      # API Keys
+      API_KEYS: "demo-key-123,test-key-456"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - bridge-network
+    healthcheck:
+      test: ["CMD", "node", "scripts/health-check.js"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  mongodb_data:
+    driver: local
+
+networks:
+  bridge-network:
+    driver: bridge

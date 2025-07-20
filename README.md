@@ -1,14 +1,12 @@
-# 🌉 Cross-Chain Bridge Monitoring System
+# Cross-Chain Bridge Monitoring System
 
-[![Node.js](https://img.shields.io/badge/Node.js-16+-green.svg)](https://nodejs.org/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-4.4+-green.svg)](https://mongodb.com/)
-[![React](https://img.shields.io/badge/React-18+-blue.svg)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-4.9+-blue.svg)](https://typescriptlang.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+A real-time monitoring and alerting system for cross-chain bridge transactions. Built to detect anomalies, track transaction flows, and provide comprehensive insights across multiple blockchain networks.
 
-A comprehensive, production-ready monitoring system for cross-chain bridge transactions with real-time anomaly detection, multi-channel alerting, and an interactive dashboard.
+## Overview
 
-## 🎯 Features
+This system monitors bridge transactions across Ethereum, Polygon, and BSC networks, providing real-time anomaly detection, automated alerting, and a comprehensive dashboard for transaction analysis.
+
+## Features
 
 - **Real-time Event Monitoring**: Track bridge events across multiple blockchain networks
 - **Anomaly Detection**: Detect timeouts, value mismatches, duplicate transactions, and suspicious activity
@@ -17,7 +15,7 @@ A comprehensive, production-ready monitoring system for cross-chain bridge trans
 - **Historical Analysis**: Query and analyze past bridge transactions
 - **RESTful API**: Comprehensive API for integration with external systems
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ├── listeners/          # Blockchain event listeners
@@ -31,12 +29,12 @@ A comprehensive, production-ready monitoring system for cross-chain bridge trans
 └── utils/             # Shared utilities
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
-- MongoDB
+- Node.js 16+
+- MongoDB 4.4+
 - Blockchain RPC endpoints (Infura, Alchemy, etc.)
 
 ### Installation
@@ -47,29 +45,36 @@ A comprehensive, production-ready monitoring system for cross-chain bridge trans
    npm install
    ```
 
-3. Copy environment configuration:
+3. Configure environment:
    ```bash
    cp .env.example .env
+   # Edit .env with your configuration
    ```
 
-4. Update `.env` with your configuration:
-   - MongoDB connection string
-   - Blockchain RPC URLs
-   - Bridge contract addresses
-   - Alert webhook URLs
-
-5. Start the development server:
+4. Start the application:
    ```bash
-   npm run dev
+   npm start
    ```
 
-### Production Deployment
+## Deployment
 
+### Vercel (Recommended)
 ```bash
-npm start
+npm install -g vercel
+vercel login
+vercel --prod
 ```
 
-## 📊 API Endpoints
+### Environment Variables
+Set these in your deployment platform:
+- `MONGODB_URI` - MongoDB connection string
+- `ETHEREUM_RPC_URL` - Ethereum RPC endpoint
+- `POLYGON_RPC_URL` - Polygon RPC endpoint
+- `BSC_RPC_URL` - BSC RPC endpoint
+- `API_KEYS` - API authentication keys
+- `JWT_SECRET` - JWT secret key
+
+## API Endpoints
 
 - `GET /api/transactions` - List bridge transactions
 - `GET /api/anomalies` - List detected anomalies
@@ -77,7 +82,7 @@ npm start
 - `GET /api/volume` - Get volume statistics
 - `GET /api/health` - System health check
 
-## 🔧 Configuration
+## Configuration
 
 The system is configured through environment variables and the `config/default.js` file. Key configuration areas:
 
@@ -211,64 +216,13 @@ Have an idea? Open an issue with:
 - Use case and benefits
 - Possible implementation approach
 
-## 📜 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-```
-MIT License
+## Author
 
-Copyright (c) 2024 Subaskar_S
+**Subaskar_S**
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
-## 👨‍💻 Made by
-
-<div align="center">
-
-### **Subaskar_S**
-
-*Full-Stack Developer & Blockchain Enthusiast*
-
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Subaskar-S)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/subaskar97)
-
----
-
-*"Building the future of cross-chain infrastructure, one commit at a time."*
-
-</div>
-
-### 🌟 About the Developer
-
-Passionate about blockchain technology and decentralized systems, I specialize in creating robust, scalable solutions for the Web3 ecosystem. This project represents my commitment to building production-ready tools that enhance the security and reliability of cross-chain operations.
-
-**Areas of Expertise:**
-- 🔗 Blockchain Development (Ethereum, Polygon, BSC)
-- ⚛️ Full-Stack Development (React, Node.js, TypeScript)
-- 🔒 Security & Anomaly Detection Systems
-- 📊 Real-Time Data Processing & Visualization
-- 🏗️ Scalable System Architecture
-
----
-
-**⭐ Star this repository if you find it useful!**
-
-**🔔 Watch this repository to stay updated with the latest features and improvements!**
+- GitHub: [@Subaskar-S](https://github.com/Subaskar-S)
+- LinkedIn: [subaskar97](https://www.linkedin.com/in/subaskar97)

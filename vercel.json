@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.js"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "MONGODB_URI": "@mongodb_uri",
+    "ETHEREUM_RPC_URL": "@ethereum_rpc",
+    "POLYGON_RPC_URL": "@polygon_rpc",
+    "BSC_RPC_URL": "@bsc_rpc",
+    "API_KEYS": "@api_keys",
+    "JWT_SECRET": "@jwt_secret"
+  },
+  "functions": {
+    "index.js": {
+      "maxDuration": 30
+    }
+  }
+}
